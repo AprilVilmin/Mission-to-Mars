@@ -80,7 +80,8 @@ def featured_image(browser):
         # Use 'read_html' to scrape the facts table into a dataframe
         df = pd.read_html('https://galaxyfacts-mars.com')[0]
 
-    return img_url
+    return f'{url}/{img_url_rel}'
+
 
 def mars_facts():
     # Add try/except for error handling
@@ -97,28 +98,6 @@ def mars_facts():
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
-
-# def mars_hemispheres(browser):
-#     # Scrape Mars Hemisphere
-#     # Visit the mars hemisphere site
-#     url = 'https://marshemispheres.com/'
-#     browser.visit(url)
-
-#     hemisphere_image_urls = []
-#     links = browser.find_by_css('a.product-item img')
-
-#     for i in range (len(links)):
-#      hemispheres = {}
-#      browser.find_by_css('a.product-item h3')[i].click()
-#      element = browser.find_link_by_text('Sample').first
-#      img_url = element['href']
-#      title = browser.find_by_css("h2.title").text
-#      hemispheres["img_url"] = img_url
-#      hemispheres["title"] = title
-#      hemisphere_image_urls.append(hemispheres)
-#      browser.back()  
-
-#     return hemisphere_image_urls
 
 def hemispheres(browser):
    url = 'https://marshemispheres.com/'
