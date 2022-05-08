@@ -102,6 +102,7 @@ def mars_facts():
 def hemispheres(browser):
    url = 'https://marshemispheres.com/'
    browser.visit(url + 'index.html')
+   #browser.visit(url)
    # Click the link, find the sample anchor, return the href
    hemisphere_image_urls = []
    for i in range(4):
@@ -127,7 +128,7 @@ def scrape_hemisphere(html_text):
        # Image error will return None, for better front-end handling
        title_elem = None
        sample_elem = None
-   hemispheres = {
+       hemispheres = {
        "title": title_elem,
        "img_url": sample_elem
    }
