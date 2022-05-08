@@ -11,9 +11,7 @@ def scrape_all():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=True)
 
-    # Used https://github.com/emmanuelmartinezs/Mission-to-Mars/blob/main/scraping.py for some logic/code
     news_title, news_paragraph = mars_news(browser)
-    hemisphere_image_urls = hemispheres(browser)
 
     # Run all scraping functions and store results in a dictionary
     data = {
@@ -21,9 +19,8 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
-        "hemispheres": hemispheres(browser),
         "last_modified": dt.datetime.now()
-        } 
+    }
 
     # Stop webdriver and return data
     browser.quit()
@@ -99,26 +96,6 @@ def mars_facts():
 
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
-
-def mars_hemispheres():
-    # Scrape Mars Hemisphere
-    # Visit the mars hemisphere site
-    url = 'https://marshemispheres.com/'
-    browser.visit(url)
-
-    hemisphere_image_urls = []
-    links = browser.find_by_css('a.product-item img'
-
-    for i in range (len(links)):
-     hemispheres = {}
-     browser.find_by_css('a.product-item h3')[i].click()
-     element = browser.find_link_by_text('Sample').first
-     img_url = element['href']
-     title = browser.find_by_css("h2.title").text
-     hemispheres["img_url"] = img_url
-     hemispheres["title"] = title
-     hemisphere_image_urls.append(hemispheres)
-     browser.back()  
 
 if __name__ == "__main__":
 
