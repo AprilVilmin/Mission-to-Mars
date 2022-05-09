@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-  
+  <!-- Copied some of the code for hemisphere html https://github.com/RachelRautenberg/Mission_to_Mars/blob/main/index.html -->
     <!-- Section for hemisphere images and titles -->
       <div class="row" id="hemispheres">
         <div class="col-md-12">
@@ -59,7 +59,7 @@
       {% for hemisphere in mars.hemispheres %}
         <div class="col-md-6">
           <div class="thumbnail">
-            <img src="{{hemisphere.image | default('static/images/error.png', true)}}" 
+            <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" 
                class="img-thumbnail"
               alt="img-responsive">
             <div class="caption">
